@@ -11,13 +11,30 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    static let thatDelegate = {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }()
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        print(NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains:.UserDomainMask).last!)
+        
+        // Initialize sign-in
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
         return true
+    }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        let _options = options as NSDictionary
+        return GIDSignIn.sharedInstance().handleURL(url,
+            sourceApplication: _options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+            annotation: _options[UIApplicationOpenURLOptionsAnnotationKey] as? String)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -108,4 +125,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

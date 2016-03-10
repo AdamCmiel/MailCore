@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D6276646D3067382FE05B2B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1581441C7842605F5ED64 /* Pods.framework */; };
 		7747E0541C422B6A0044E6EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E0531C422B6A0044E6EA /* AppDelegate.swift */; };
 		7747E0561C422B6A0044E6EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E0551C422B6A0044E6EA /* ViewController.swift */; };
 		7747E0591C422B6B0044E6EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7747E0571C422B6B0044E6EA /* Main.storyboard */; };
@@ -15,6 +16,27 @@
 		7747E0611C422B6B0044E6EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7747E05F1C422B6B0044E6EA /* LaunchScreen.storyboard */; };
 		7747E06C1C422B6B0044E6EA /* MailCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E06B1C422B6B0044E6EA /* MailCoreTests.swift */; };
 		7747E0771C422B6B0044E6EA /* MailCoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E0761C422B6B0044E6EA /* MailCoreUITests.swift */; };
+		77A44BC11C4EAABB00F731A7 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC01C4EAABB00F731A7 /* Info.swift */; };
+		77A44BC91C4EB14300F731A7 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */; };
+		77A44BCA1C4EB14300F731A7 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */; };
+		77A44BCB1C4EB14300F731A7 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */; };
+		77A44BCD1C4EB71F00F731A7 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BCC1C4EB71F00F731A7 /* Mail.swift */; };
+		77A44BCE1C4EB71F00F731A7 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BCC1C4EB71F00F731A7 /* Mail.swift */; };
+		77A44BCF1C4EB71F00F731A7 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BCC1C4EB71F00F731A7 /* Mail.swift */; };
+		77A44BD11C4EBBD300F731A7 /* PGP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD01C4EBBD300F731A7 /* PGP.swift */; };
+		77A44BD21C4EBBD300F731A7 /* PGP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD01C4EBBD300F731A7 /* PGP.swift */; };
+		77A44BD31C4EBBD300F731A7 /* PGP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD01C4EBBD300F731A7 /* PGP.swift */; };
+		77A44BD61C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */; };
+		77A44BD71C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */; };
+		77A44BD81C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */; };
+		77A44BD91C4EFA8100F731A7 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD51C4EFA8100F731A7 /* Email.swift */; };
+		77A44BDA1C4EFA8100F731A7 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD51C4EFA8100F731A7 /* Email.swift */; };
+		77A44BDB1C4EFA8100F731A7 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD51C4EFA8100F731A7 /* Email.swift */; };
+		77A44C341C4EFED000F731A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77A44C331C4EFED000F731A7 /* GoogleService-Info.plist */; };
+		77A44C351C4EFEFC00F731A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77A44C331C4EFED000F731A7 /* GoogleService-Info.plist */; };
+		77A44C361C4EFEFE00F731A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77A44C331C4EFED000F731A7 /* GoogleService-Info.plist */; };
+		77A44C381C4F001B00F731A7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A44C371C4F001B00F731A7 /* Security.framework */; };
+		77A44C3A1C4F002800F731A7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A44C391C4F002800F731A7 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4953FBC2EC2434C6BDE031E1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6FE1581441C7842605F5ED64 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7747E0501C422B6A0044E6EA /* MailCore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailCore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7747E0531C422B6A0044E6EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7747E0551C422B6A0044E6EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +73,18 @@
 		7747E0721C422B6B0044E6EA /* MailCoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MailCoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7747E0761C422B6B0044E6EA /* MailCoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailCoreUITests.swift; sourceTree = "<group>"; };
 		7747E0781C422B6B0044E6EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7747E0841C422C130044E6EA /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		77A44BC01C4EAABB00F731A7 /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		77A44BCC1C4EB71F00F731A7 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
+		77A44BD01C4EBBD300F731A7 /* PGP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGP.swift; sourceTree = "<group>"; };
+		77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Email+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		77A44BD51C4EFA8100F731A7 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		77A44BE01C4EFC0600F731A7 /* libOAuthTouch2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuthTouch2.a; path = "../../gtm-oauth2/Source/build/Debug-iphoneos/libOAuthTouch2.a"; sourceTree = "<group>"; };
+		77A44C331C4EFED000F731A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		77A44C371C4F001B00F731A7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		77A44C391C4F002800F731A7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7E4BAEDDA38162998009A666 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +92,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A44C3A1C4F002800F731A7 /* SystemConfiguration.framework in Frameworks */,
+				77A44C381C4F001B00F731A7 /* Security.framework in Frameworks */,
+				3D6276646D3067382FE05B2B /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DBFBF41D7F7A2930322B8E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E4BAEDDA38162998009A666 /* Pods.debug.xcconfig */,
+				4953FBC2EC2434C6BDE031E1 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7747E0471C422B6A0044E6EA = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +131,8 @@
 				7747E06A1C422B6B0044E6EA /* MailCoreTests */,
 				7747E0751C422B6B0044E6EA /* MailCoreUITests */,
 				7747E0511C422B6A0044E6EA /* Products */,
+				5DBFBF41D7F7A2930322B8E9 /* Pods */,
+				A611795DDAECEBD35603CFAB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +149,21 @@
 		7747E0521C422B6A0044E6EA /* MailCore */ = {
 			isa = PBXGroup;
 			children = (
+				77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */,
+				77A44BCC1C4EB71F00F731A7 /* Mail.swift */,
+				77A44BD01C4EBBD300F731A7 /* PGP.swift */,
+				7747E0841C422C130044E6EA /* Bridging-Header.h */,
 				7747E0531C422B6A0044E6EA /* AppDelegate.swift */,
 				7747E0551C422B6A0044E6EA /* ViewController.swift */,
+				77A44BC01C4EAABB00F731A7 /* Info.swift */,
 				7747E0571C422B6B0044E6EA /* Main.storyboard */,
 				7747E05D1C422B6B0044E6EA /* Assets.xcassets */,
 				7747E05F1C422B6B0044E6EA /* LaunchScreen.storyboard */,
+				77A44C331C4EFED000F731A7 /* GoogleService-Info.plist */,
 				7747E0621C422B6B0044E6EA /* Info.plist */,
 				7747E05A1C422B6B0044E6EA /* MailCore.xcdatamodeld */,
+				77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */,
+				77A44BD51C4EFA8100F731A7 /* Email.swift */,
 			);
 			path = MailCore;
 			sourceTree = "<group>";
@@ -128,6 +186,17 @@
 			path = MailCoreUITests;
 			sourceTree = "<group>";
 		};
+		A611795DDAECEBD35603CFAB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77A44C391C4F002800F731A7 /* SystemConfiguration.framework */,
+				77A44C371C4F001B00F731A7 /* Security.framework */,
+				77A44BE01C4EFC0600F731A7 /* libOAuthTouch2.a */,
+				6FE1581441C7842605F5ED64 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7747E07B1C422B6B0044E6EA /* Build configuration list for PBXNativeTarget "MailCore" */;
 			buildPhases = (
+				B75F5ECF75698751B9FFF222 /* Check Pods Manifest.lock */,
 				7747E04C1C422B6A0044E6EA /* Sources */,
 				7747E04D1C422B6A0044E6EA /* Frameworks */,
 				7747E04E1C422B6A0044E6EA /* Resources */,
+				246A39D6A93200B2F05442E1 /* Embed Pods Frameworks */,
+				7C2B03BA2F514E35FEB6F82E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7747E0611C422B6B0044E6EA /* LaunchScreen.storyboard in Resources */,
+				77A44C341C4EFED000F731A7 /* GoogleService-Info.plist in Resources */,
 				7747E05E1C422B6B0044E6EA /* Assets.xcassets in Resources */,
 				7747E0591C422B6B0044E6EA /* Main.storyboard in Resources */,
 			);
@@ -242,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A44C351C4EFEFC00F731A7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,17 +323,72 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A44C361C4EFEFE00F731A7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		246A39D6A93200B2F05442E1 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C2B03BA2F514E35FEB6F82E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B75F5ECF75698751B9FFF222 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7747E04C1C422B6A0044E6EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A44BCD1C4EB71F00F731A7 /* Mail.swift in Sources */,
+				77A44BC91C4EB14300F731A7 /* WebViewViewController.swift in Sources */,
 				7747E0561C422B6A0044E6EA /* ViewController.swift in Sources */,
+				77A44BD11C4EBBD300F731A7 /* PGP.swift in Sources */,
+				77A44BD61C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */,
+				77A44BD91C4EFA8100F731A7 /* Email.swift in Sources */,
+				77A44BC11C4EAABB00F731A7 /* Info.swift in Sources */,
 				7747E05C1C422B6B0044E6EA /* MailCore.xcdatamodeld in Sources */,
 				7747E0541C422B6A0044E6EA /* AppDelegate.swift in Sources */,
 			);
@@ -269,7 +398,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A44BCE1C4EB71F00F731A7 /* Mail.swift in Sources */,
+				77A44BCA1C4EB14300F731A7 /* WebViewViewController.swift in Sources */,
+				77A44BDA1C4EFA8100F731A7 /* Email.swift in Sources */,
 				7747E06C1C422B6B0044E6EA /* MailCoreTests.swift in Sources */,
+				77A44BD71C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */,
+				77A44BD21C4EBBD300F731A7 /* PGP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +411,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A44BCF1C4EB71F00F731A7 /* Mail.swift in Sources */,
+				77A44BCB1C4EB14300F731A7 /* WebViewViewController.swift in Sources */,
+				77A44BDB1C4EFA8100F731A7 /* Email.swift in Sources */,
 				7747E0771C422B6B0044E6EA /* MailCoreUITests.swift in Sources */,
+				77A44BD81C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */,
+				77A44BD31C4EBBD300F731A7 /* PGP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,23 +540,29 @@
 		};
 		7747E07C1C422B6B0044E6EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E4BAEDDA38162998009A666 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MailCore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamcmiel.app.MailCore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PRODUCT_NAME}/Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		7747E07D1C422B6B0044E6EA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4953FBC2EC2434C6BDE031E1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MailCore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamcmiel.app.MailCore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PRODUCT_NAME}/Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -488,6 +633,7 @@
 				7747E07D1C422B6B0044E6EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7747E07E1C422B6B0044E6EA /* Build configuration list for PBXNativeTarget "MailCoreTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +642,7 @@
 				7747E0801C422B6B0044E6EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7747E0811C422B6B0044E6EA /* Build configuration list for PBXNativeTarget "MailCoreUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +651,7 @@
 				7747E0831C422B6B0044E6EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
