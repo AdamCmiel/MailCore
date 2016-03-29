@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D6276646D3067382FE05B2B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1581441C7842605F5ED64 /* Pods.framework */; };
+		772D3BAF1CAA5F07003C2DDB /* libMailCore-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 772D3BAE1CAA5F07003C2DDB /* libMailCore-ios.a */; };
 		7747E0541C422B6A0044E6EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E0531C422B6A0044E6EA /* AppDelegate.swift */; };
 		7747E0561C422B6A0044E6EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E0551C422B6A0044E6EA /* ViewController.swift */; };
 		7747E0591C422B6B0044E6EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7747E0571C422B6B0044E6EA /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 		7747E0611C422B6B0044E6EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7747E05F1C422B6B0044E6EA /* LaunchScreen.storyboard */; };
 		7747E06C1C422B6B0044E6EA /* MailCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E06B1C422B6B0044E6EA /* MailCoreTests.swift */; };
 		7747E0771C422B6B0044E6EA /* MailCoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E0761C422B6B0044E6EA /* MailCoreUITests.swift */; };
+		775B385E1CAA7113001F5967 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775B385D1CAA7113001F5967 /* GTMOAuth2ViewTouch.xib */; };
 		77A44BC11C4EAABB00F731A7 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC01C4EAABB00F731A7 /* Info.swift */; };
 		77A44BC91C4EB14300F731A7 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */; };
 		77A44BCA1C4EB14300F731A7 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */; };
@@ -59,6 +61,10 @@
 /* Begin PBXFileReference section */
 		4953FBC2EC2434C6BDE031E1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6FE1581441C7842605F5ED64 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		772D3BAE1CAA5F07003C2DDB /* libMailCore-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMailCore-ios.a"; path = "Pods/mailcore2-ios/lib/libMailCore-ios.a"; sourceTree = "<group>"; };
+		772D3BB01CAA6784003C2DDB /* GTMOAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMOAuth2.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MailCore-gkbbvadityppdscpxcrgaqzlqaym/Build/Products/Debug-iphonesimulator/GTMOAuth2.framework"; sourceTree = "<group>"; };
+		772D3BB11CAA6784003C2DDB /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MailCore-gkbbvadityppdscpxcrgaqzlqaym/Build/Products/Debug-iphonesimulator/GTMSessionFetcher.framework"; sourceTree = "<group>"; };
+		772D3BB21CAA6784003C2DDB /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MailCore-gkbbvadityppdscpxcrgaqzlqaym/Build/Products/Debug-iphonesimulator/KeychainSwift.framework"; sourceTree = "<group>"; };
 		7747E0501C422B6A0044E6EA /* MailCore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailCore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7747E0531C422B6A0044E6EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7747E0551C422B6A0044E6EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,13 +80,13 @@
 		7747E0761C422B6B0044E6EA /* MailCoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailCoreUITests.swift; sourceTree = "<group>"; };
 		7747E0781C422B6B0044E6EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7747E0841C422C130044E6EA /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		775B385D1CAA7113001F5967 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		77A44BC01C4EAABB00F731A7 /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		77A44BCC1C4EB71F00F731A7 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
 		77A44BD01C4EBBD300F731A7 /* PGP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGP.swift; sourceTree = "<group>"; };
 		77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Email+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		77A44BD51C4EFA8100F731A7 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
-		77A44BE01C4EFC0600F731A7 /* libOAuthTouch2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuthTouch2.a; path = "../../gtm-oauth2/Source/build/Debug-iphoneos/libOAuthTouch2.a"; sourceTree = "<group>"; };
 		77A44C331C4EFED000F731A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		77A44C371C4F001B00F731A7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		77A44C391C4F002800F731A7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -95,6 +101,7 @@
 				77A44C3A1C4F002800F731A7 /* SystemConfiguration.framework in Frameworks */,
 				77A44C381C4F001B00F731A7 /* Security.framework in Frameworks */,
 				3D6276646D3067382FE05B2B /* Pods.framework in Frameworks */,
+				772D3BAF1CAA5F07003C2DDB /* libMailCore-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +171,7 @@
 				7747E05A1C422B6B0044E6EA /* MailCore.xcdatamodeld */,
 				77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */,
 				77A44BD51C4EFA8100F731A7 /* Email.swift */,
+				775B385D1CAA7113001F5967 /* GTMOAuth2ViewTouch.xib */,
 			);
 			path = MailCore;
 			sourceTree = "<group>";
@@ -189,9 +197,12 @@
 		A611795DDAECEBD35603CFAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				772D3BB01CAA6784003C2DDB /* GTMOAuth2.framework */,
+				772D3BB11CAA6784003C2DDB /* GTMSessionFetcher.framework */,
+				772D3BB21CAA6784003C2DDB /* KeychainSwift.framework */,
+				772D3BAE1CAA5F07003C2DDB /* libMailCore-ios.a */,
 				77A44C391C4F002800F731A7 /* SystemConfiguration.framework */,
 				77A44C371C4F001B00F731A7 /* Security.framework */,
-				77A44BE01C4EFC0600F731A7 /* libOAuthTouch2.a */,
 				6FE1581441C7842605F5ED64 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -304,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				775B385E1CAA7113001F5967 /* GTMOAuth2ViewTouch.xib in Resources */,
 				7747E0611C422B6B0044E6EA /* LaunchScreen.storyboard in Resources */,
 				77A44C341C4EFED000F731A7 /* GoogleService-Info.plist in Resources */,
 				7747E05E1C422B6B0044E6EA /* Assets.xcassets in Resources */,
@@ -477,6 +489,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/adamcmiel/Library/Developer/Xcode/DerivedData/MailCore-gkbbvadityppdscpxcrgaqzlqaym/Build/Products/Debug-iphonesimulator/gtm_oauth2.framework/";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -522,6 +535,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "/Users/adamcmiel/Library/Developer/Xcode/DerivedData/MailCore-gkbbvadityppdscpxcrgaqzlqaym/Build/Products/Debug-iphonesimulator/gtm_oauth2.framework/";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -544,8 +558,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Private/GTMOAuth2\"";
 				INFOPLIST_FILE = MailCore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/mailcore2-ios/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamcmiel.app.MailCore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PRODUCT_NAME}/Bridging-Header.h";
@@ -558,8 +577,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Private/GTMOAuth2\"";
 				INFOPLIST_FILE = MailCore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/mailcore2-ios/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamcmiel.app.MailCore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PRODUCT_NAME}/Bridging-Header.h";

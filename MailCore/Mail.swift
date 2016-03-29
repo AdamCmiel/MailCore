@@ -29,11 +29,11 @@ struct Mail {
         return s
     }()
     
-    func fetchFolderInfo(completionHandler: (NSError!, MCOIMAPFolderInfo!) -> Void) {
+    func fetchFolderInfo(completionHandler: (NSError?, MCOIMAPFolderInfo?) -> Void) {
         session.folderInfoOperation(folder).start(completionHandler)
     }
     
-    func fetchMessageHeaders(count: Int, completionHandler: (NSError!, [AnyObject]!, MCOIndexSet!) -> Void) {
+    func fetchMessageHeaders(count: Int, completionHandler: (NSError?, [AnyObject]?, MCOIndexSet?) -> Void) {
         
         fetchFolderInfo { (error, info) -> Void in
             
@@ -44,7 +44,7 @@ struct Mail {
             }
             
             let numberOfMessages: UInt64 = UInt64(count)
-            let numbers = MCOIndexSet(range: MCORangeMake(UInt64(info.messageCount) - numberOfMessages, numberOfMessages))
+            let numbers = MCOIndexSet(range: MCORangeMake(UInt64(info!.messageCount) - numberOfMessages, numberOfMessages))
             let fetchOperation = self.session.fetchMessagesOperationWithFolder(self.folder, requestKind: .Headers, uids: numbers)
     
             fetchOperation.start(completionHandler)

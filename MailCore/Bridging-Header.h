@@ -10,6 +10,8 @@
 #define Bridging_Header_h
 
 #import <MailCore/MailCore.h>
-#import <Google/SignIn.h>
+#import <GTMOAuth2/GTMOAuth2Authentication.h>
+#import <GTMOAuth2/GTMOAuth2SignIn.h>
+#import <GTMOAuth2/GTMOAuth2ViewControllerTouch.h>
 
 #endif /* Bridging_Header_h */

@@ -23,19 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains:.UserDomainMask).last!)
         
         // Initialize sign-in
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+//        var configureError: NSError?
+////        GGLContext.sharedInstance().configureWithError(&configureError)
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
         return true
     }
     
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        let _options = options as NSDictionary
-        return GIDSignIn.sharedInstance().handleURL(url,
-            sourceApplication: _options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
-            annotation: _options[UIApplicationOpenURLOptionsAnnotationKey] as? String)
-    }
+//    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+//        let _options = options as NSDictionary
+////        return GIDSignIn.sharedInstance().handleURL(url,
+////            sourceApplication: _options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+////            annotation: _options[UIApplicationOpenURLOptionsAnnotationKey] as? String)
+//    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
