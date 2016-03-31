@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="51m-t9-R9J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="51m-t9-R9J">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -53,7 +53,18 @@
                             <constraint firstItem="oC9-R2-kEJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="qco-rt-irg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Inbox" id="It5-mF-FkS"/>
+                    <navigationItem key="navigationItem" title="Inbox" id="It5-mF-FkS">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="GHi-Y8-e0t">
+                            <connections>
+                                <action selector="logout:" destination="BYZ-38-t0r" id="BYH-F2-Fhw"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="SEY-9i-Zwo">
+                            <connections>
+                                <action selector="refresh:" destination="BYZ-38-t0r" id="6VN-Qk-NzM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="oC9-R2-kEJ" id="b15-kL-ahO"/>
                         <segue destination="c81-u6-UPl" kind="show" identifier="showWebViewController" id="fcG-Dx-E7X"/>

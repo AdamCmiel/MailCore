@@ -26,7 +26,11 @@ struct AppSecrets {
         }
         
         set(value) {
-            keychain.set(value!, forKey:key, withAccess: .AccessibleWhenUnlocked)
+            if value == nil {
+                keychain.delete(key)
+            } else {
+                keychain.set(value!, forKey:key, withAccess: .AccessibleWhenUnlocked)
+            }
         }
     }
     
@@ -89,6 +93,14 @@ struct GmailCreds {
         Defaults[GmailCreds.kEmailKey] = email
         Secrets[GmailCreds.kUserIdKey] = userId
         Secrets[GmailCreds.kTokenKey] = accessToken
+    }
+    
+    static func clearStorage() {
+        Defaults[GmailCreds.kNameKey] = nil
+        Defaults[GmailCreds.kEmailKey] = nil
+        Secrets[GmailCreds.kUserIdKey] = nil
+        Secrets[GmailCreds.kTokenKey] = nil
+        GmailSession.sharedSession.inMemoryCreds = nil
     }
 }
 

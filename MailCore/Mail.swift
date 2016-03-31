@@ -10,7 +10,7 @@ import Foundation
 
 struct Mail {
     
-    static let sharedMail = Mail()
+    static var sharedMail = Mail()
     
     static let kGmailIMAPHostnameKey = "GmailIMAPHostname"
     static let kGmailIMAPFolderKey = "GmailIMAPFolder"
@@ -51,9 +51,29 @@ struct Mail {
         }
     }
     
+    /**
+     
+     Gets 50 emails
+     
+     - Parameter completionHandler: callback with email
+     
+     */
     func getEmailHeaders(completionHandler: [MCOIMAPMessage]! -> Void) {
+        getEmailHeaders(50, completionHandler: completionHandler)
+    }
+    
+    /**
+     
+     Gets n emails
+     
+     - Parameter count: number of emails
+     
+     - Parameter completionHandler: callback with email
+     
+    */
+    func getEmailHeaders(count: Int, completionHandler: [MCOIMAPMessage]! -> Void) {
         
-        fetchMessageHeaders(50) { error, messages, vanishedMessages in
+        fetchMessageHeaders(count) { error, messages, vanishedMessages in
             print("operation callback")
             
             guard error == nil else {

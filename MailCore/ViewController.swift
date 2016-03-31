@@ -12,20 +12,49 @@ import GTMSessionFetcher
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var emails: [MCOIMAPMessage] = []
+    var refresher = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func logout(sender: AnyObject) {
+        GmailCreds.clearStorage()
+        Mail.sharedMail = Mail()
+    GTMOAuth2ViewControllerTouch.removeAuthFromKeychainForName("googleKeychain")
+        emails = []
+        reload()
+        loginAndFetchEmail()
+    }
+    
+    @IBAction func refresh(sender: AnyObject) {
+        Mail.sharedMail.getEmailHeaders(20) { headers in
+            self.messagesDidFetchWithHeaders(headers)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
+        refresher.attributedTitle = NSAttributedString(string: "Get them emails")
+        refresher.addTarget(self, action: #selector(ViewController.refresh(_:)), forControlEvents: .ValueChanged)
+        tableView.addSubview(refresher)
+        
+        loginAndFetchEmail()
+    }
+    
+    func loginAndFetchEmail() {
         do {
             let creds = try GmailSession.sharedSession.creds()
             loadEmail(creds: creds)
         } catch {
             signIn()
         }
-        
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    func messagesDidFetchWithHeaders(emailHeaders: [MCOIMAPMessage]) {
+        self.emails = emailHeaders
+        self.reload()
+        self.refresher.endRefreshing()
     }
     
     func reload() {
@@ -66,14 +95,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Mail.sharedMail.session.username = creds.email
         Mail.sharedMail.session.OAuth2Token = creds.accessToken
         
-        Mail.sharedMail.getEmailHeaders { emailHeaders in
-            self.emails = emailHeaders
-            self.reload()
+        refresher.beginRefreshing()
+        
+        Mail.sharedMail.getEmailHeaders(20) { headers in
+            self.messagesDidFetchWithHeaders(headers)
         }
     }
     
     func signIn() {
-        
         let scope = "https://mail.google.com"
         let clientID = Info["GMAIL_CLIENT_ID"] as! String
         let clientSecret = Info["GMAIL_SECRET"] as! String
@@ -106,6 +135,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         guard error == nil else {
             fatalError("there was an error finishing the authentication")
+        }
+        
+        if let windowController = windowController {
+            windowController.dismissViewControllerAnimated(true) {
+                print("window controller dismissed")
+            }
         }
         
         let userID = auth.userID
