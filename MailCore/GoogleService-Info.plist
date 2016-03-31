@@ -22,5 +22,13 @@
 	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:86462340136:ios:b43f24ca0d33f7fd</string>
+	<key>new_CLIENT_ID</key>
+	<string>86462340136-a8ctfhrfcgcv25ukl9s64m507h8tqbcv.apps.googleusercontent.com</string>
+	<key>third_C_ID</key>
+	<string>816380695459-rdgelo8a7t6pka8cqqgno2iq4ou1ae17.apps.googleusercontent.com</string>
+	<key>4_C_ID</key>
+	<string>816380695459-he2050dlpl1sj5a0a52ughclvvkis0rs.apps.googleusercontent.com</string>
+	<key>4_secret</key>
+	<string>Fmjqe8Qv07w1uCbGhp8KDWtB</string>
 </dict>
 </plist>

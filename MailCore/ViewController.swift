@@ -8,6 +8,7 @@
 
 import UIKit
 import GTMOAuth2
+import GTMSessionFetcher
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var emails: [MCOIMAPMessage] = []
@@ -72,39 +73,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func signIn() {
-        do {
-            let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName("googleKeychain", clientID: "86462340136-3t72onh6i3cjqbbfjecpin1a4268brk0.apps.googleusercontent.com", clientSecret: "foo") //
-            if auth.refreshToken == nil {
-//                let windowController = GTMOAuth2ViewControllerTouch(scope: "https://mail.google.com", clientID: "86462340136-3t72onh6i3cjqbbfjecpin1a4268brk0.apps.googleusercontent.com", clientSecret: "foo", keychainItemName: "googleKeychain", completionHandler: { (controller, auth, error) in
-                
-                let windowController = GTMOAuth2ViewControllerTouch(scope: "https://mail.google.com", clientID: "86462340136-3t72onh6i3cjqbbfjecpin1a4268brk0.apps.googleusercontent.com", clientSecret: "foo", keychainItemName: "googleKeychain", delegate: self, finishedSelector: "hello")
-                
-                presentViewController(windowController, animated: true, completion: {
-                    print("presented")
-                })
-            } else {
-                auth.beginTokenFetchWithDelegate(self, didFinishSelector: "hello")
-            }
-        } catch let error {
+        
+        let scope = "https://mail.google.com"
+        let clientID = Info["GMAIL_CLIENT_ID"] as! String
+        let clientSecret = Info["GMAIL_SECRET"] as! String
+        
+        let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName("googleKeychain", clientID: clientID, clientSecret: clientSecret)
+        
+        if auth.refreshToken == nil {
+            let windowController = GTMOAuth2ViewControllerTouch(scope: scope, clientID: clientID, clientSecret: clientSecret, keychainItemName: "googleKeychain", delegate: self, finishedSelector: #selector(ViewController.windowController(_:finishedWithAuth:error:)))
             
+            presentViewController(windowController, animated: true, completion: {
+                print("presented")
+            })
+            
+        } else {
+            auth.beginTokenFetchWithDelegate(self, didFinishSelector: #selector(ViewController.auth(_:finishedRefreshWithFetcher:error:)))
         }
-//        auth.signInSheetModalForWindow(nil, delegate: self, selector: "")
+            
     }
     
-//    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-//        withError error: NSError!) {
-//            if (error == nil) {
-//                // Perform any operations on signed in user here.
-//                let userId = user.userID                  // For client-side use only!
-//                let accessToken = user.authentication.accessToken // Safe to send to the server
-//                let name = user.profile.name
-//                let email = user.profile.email
-//                
-//                let gmailCreds = GmailCreds(userId: userId, accessToken: accessToken, name: name, email: email)
-//                gmailCreds.saveToStorage()
-//                self.loadEmail(creds: gmailCreds)
-//            } else {
-//                print("\(error.localizedDescription)")
-//            }
-//    }
+    func auth(auth: GTMOAuth2Authentication, finishedRefreshWithFetcher fetcher: GTMSessionFetcher, error: NSError?) {
+        
+        guard error == nil else {
+            fatalError("there was an error refreshing the session")
+        }
+        
+        windowController(nil, finishedWithAuth: auth, error: error)
+    }
+    
+    func windowController(windowController: GTMOAuth2ViewControllerTouch?, finishedWithAuth auth: GTMOAuth2Authentication, error: NSError?) {
+        
+        guard error == nil else {
+            fatalError("there was an error finishing the authentication")
+        }
+        
+        let userID = auth.userID
+        let access = auth.accessToken
+        let email = auth.userEmail
+        
+        let gmailCreds = GmailCreds(userId: userID, accessToken: access, name: "", email: email)
+        gmailCreds.saveToStorage()
+        loadEmail(creds: gmailCreds)
+    }
 }

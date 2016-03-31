@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GMAIL_CLIENT_ID</key>
+	<string>816380695459-he2050dlpl1sj5a0a52ughclvvkis0rs.apps.googleusercontent.com</string>
+	<key>GMAIL_SECRET</key>
+	<string>Fmjqe8Qv07w1uCbGhp8KDWtB</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
