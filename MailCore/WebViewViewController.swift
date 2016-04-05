@@ -72,5 +72,13 @@ class WebViewViewController: UIViewController, WKNavigationDelegate {
         
         indicator?.stopAnimating()
         indicator?.removeFromSuperview()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
+    }
+    
+    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+        poorNetworkAlert(self) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
     }
 }
