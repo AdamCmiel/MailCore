@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class WebViewViewController: UIViewController, WKNavigationDelegate {
+class WebViewViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate {
     var uid: UInt64?
     var email: MCOIMAPMessage?
     
@@ -26,7 +26,12 @@ class WebViewViewController: UIViewController, WKNavigationDelegate {
         
         self.view.addSubview(webView)
         
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[webView]-0-|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["webView": webView]))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[webView]-0-|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["webView": webView]))
+        
         Mail.sharedMail.emailHTML(email!) { html in
+            print(html)
             self.webView.loadHTMLString(html, baseURL: nil)
         }
     }

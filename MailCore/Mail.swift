@@ -33,18 +33,18 @@ struct Mail {
         session.folderInfoOperation(folder).start(completionHandler)
     }
     
-    func fetchMessageHeaders(count: Int, completionHandler: (NSError?, [AnyObject]?, MCOIndexSet?) -> Void) {
+    func fetchMessageHeaders(count: Int, completionHandler: (NSError?, [AnyObject]?, MCOIndexSet?) -> Void, errorHandler: ErrorType -> Void) {
         
         fetchFolderInfo { (error, info) -> Void in
             
-            guard error == nil else {
+            if let error = error {
                 print("error downloading message headers")
-                print(error)
-                fatalError()
+                return errorHandler(error)
             }
             
-            let numberOfMessages: UInt64 = UInt64(count)
-            let numbers = MCOIndexSet(range: MCORangeMake(UInt64(info!.messageCount) - numberOfMessages, numberOfMessages))
+            let firstId = (info!.firstUnseenUid == 0) ? UInt64(info!.messageCount - count) : UInt64(Int(info!.firstUnseenUid) - count)
+            let lastId = UInt64.max
+            let numbers = MCOIndexSet(range: MCORangeMake(firstId, lastId))
             let fetchOperation = self.session.fetchMessagesOperationWithFolder(self.folder, requestKind: .Headers, uids: numbers)
     
             fetchOperation.start(completionHandler)
@@ -58,8 +58,8 @@ struct Mail {
      - Parameter completionHandler: callback with email
      
      */
-    func getEmailHeaders(completionHandler: [MCOIMAPMessage]! -> Void) {
-        getEmailHeaders(50, completionHandler: completionHandler)
+    func getEmailHeaders(completionHandler: [MCOIMAPMessage]! -> Void, errorHandler: ErrorType -> Void) {
+        getEmailHeaders(50, completionHandler: completionHandler, errorHandler: errorHandler)
     }
     
     /**
@@ -71,9 +71,9 @@ struct Mail {
      - Parameter completionHandler: callback with email
      
     */
-    func getEmailHeaders(count: Int, completionHandler: [MCOIMAPMessage]! -> Void) {
+    func getEmailHeaders(count: Int, completionHandler: [MCOIMAPMessage]! -> Void, errorHandler: ErrorType -> Void) {
         
-        fetchMessageHeaders(count) { error, messages, vanishedMessages in
+        fetchMessageHeaders(count, completionHandler: { error, messages, vanishedMessages in
             print("operation callback")
             
             guard error == nil else {
@@ -86,8 +86,8 @@ struct Mail {
             print(messages)
             
             let imapMessages = messages as! [MCOIMAPMessage]
-            completionHandler(imapMessages)
-        }
+            completionHandler(imapMessages.reverse())
+        }, errorHandler: errorHandler)
     }
     
     func getEmailData(message: MCOIMAPMessage, completionHandler: NSData -> Void) {

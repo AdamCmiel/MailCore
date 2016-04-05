@@ -59,11 +59,6 @@
                                 <action selector="logout:" destination="BYZ-38-t0r" id="BYH-F2-Fhw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="SEY-9i-Zwo">
-                            <connections>
-                                <action selector="refresh:" destination="BYZ-38-t0r" id="6VN-Qk-NzM"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="oC9-R2-kEJ" id="b15-kL-ahO"/>

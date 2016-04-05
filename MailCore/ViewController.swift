@@ -13,6 +13,7 @@ import GTMSessionFetcher
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var emails: [MCOIMAPMessage] = []
     var refresher = UIRefreshControl()
+    var loginRetries = 0
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,9 +27,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func refresh(sender: AnyObject) {
-        Mail.sharedMail.getEmailHeaders(20) { headers in
+        Mail.sharedMail.getEmailHeaders(20, completionHandler: { headers in
             self.messagesDidFetchWithHeaders(headers)
-        }
+        }, errorHandler: { error in
+            if self.loginRetries < 3 {
+                self.loginRetries += 1
+                self.logout(self)
+                self.loginAndFetchEmail()
+            } else {
+                fatalError()
+            }
+        })
     }
 
     override func viewDidLoad() {
@@ -97,9 +106,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         refresher.beginRefreshing()
         
-        Mail.sharedMail.getEmailHeaders(20) { headers in
+        Mail.sharedMail.getEmailHeaders(20, completionHandler: { headers in
             self.messagesDidFetchWithHeaders(headers)
-        }
+        }, errorHandler: { error in
+            if self.loginRetries < 3 {
+                self.loginRetries += 1
+                self.logout(self)
+                self.loadEmail(creds: creds)
+            } else {
+                fatalError()
+            }
+        })
     }
     
     func signIn() {
