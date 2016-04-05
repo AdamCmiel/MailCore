@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class WebViewViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate {
+class WebViewViewController: UIViewController, WKNavigationDelegate {
     var uid: UInt64?
     var email: MCOIMAPMessage?
     

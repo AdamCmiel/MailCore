@@ -25,9 +25,6 @@
 		77A44BCD1C4EB71F00F731A7 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BCC1C4EB71F00F731A7 /* Mail.swift */; };
 		77A44BCE1C4EB71F00F731A7 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BCC1C4EB71F00F731A7 /* Mail.swift */; };
 		77A44BCF1C4EB71F00F731A7 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BCC1C4EB71F00F731A7 /* Mail.swift */; };
-		77A44BD11C4EBBD300F731A7 /* PGP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD01C4EBBD300F731A7 /* PGP.swift */; };
-		77A44BD21C4EBBD300F731A7 /* PGP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD01C4EBBD300F731A7 /* PGP.swift */; };
-		77A44BD31C4EBBD300F731A7 /* PGP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD01C4EBBD300F731A7 /* PGP.swift */; };
 		77A44BD61C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */; };
 		77A44BD71C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */; };
 		77A44BD81C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */; };
@@ -84,7 +81,6 @@
 		77A44BC01C4EAABB00F731A7 /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		77A44BCC1C4EB71F00F731A7 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
-		77A44BD01C4EBBD300F731A7 /* PGP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGP.swift; sourceTree = "<group>"; };
 		77A44BD41C4EFA8100F731A7 /* Email+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Email+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		77A44BD51C4EFA8100F731A7 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		77A44C331C4EFED000F731A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -158,7 +154,6 @@
 			children = (
 				77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */,
 				77A44BCC1C4EB71F00F731A7 /* Mail.swift */,
-				77A44BD01C4EBBD300F731A7 /* PGP.swift */,
 				7747E0841C422C130044E6EA /* Bridging-Header.h */,
 				7747E0531C422B6A0044E6EA /* AppDelegate.swift */,
 				7747E0551C422B6A0044E6EA /* ViewController.swift */,
@@ -397,7 +392,6 @@
 				77A44BCD1C4EB71F00F731A7 /* Mail.swift in Sources */,
 				77A44BC91C4EB14300F731A7 /* WebViewViewController.swift in Sources */,
 				7747E0561C422B6A0044E6EA /* ViewController.swift in Sources */,
-				77A44BD11C4EBBD300F731A7 /* PGP.swift in Sources */,
 				77A44BD61C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */,
 				77A44BD91C4EFA8100F731A7 /* Email.swift in Sources */,
 				77A44BC11C4EAABB00F731A7 /* Info.swift in Sources */,
@@ -415,7 +409,6 @@
 				77A44BDA1C4EFA8100F731A7 /* Email.swift in Sources */,
 				7747E06C1C422B6B0044E6EA /* MailCoreTests.swift in Sources */,
 				77A44BD71C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */,
-				77A44BD21C4EBBD300F731A7 /* PGP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,7 +421,6 @@
 				77A44BDB1C4EFA8100F731A7 /* Email.swift in Sources */,
 				7747E0771C422B6B0044E6EA /* MailCoreUITests.swift in Sources */,
 				77A44BD81C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */,
-				77A44BD31C4EBBD300F731A7 /* PGP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -78,6 +78,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let email = emails[indexPath.row]
         cell.textLabel!.text = email.header.subject
+        
+        if !email.flags.contains(.Seen) {
+            cell.textLabel?.textColor = UIColor.blueColor().colorWithAlphaComponent(0.4);
+        }
+        
         return cell
     }
     

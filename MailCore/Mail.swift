@@ -45,7 +45,8 @@ struct Mail {
             let firstId = (info!.firstUnseenUid == 0) ? UInt64(info!.messageCount - count) : UInt64(Int(info!.firstUnseenUid) - count)
             let lastId = UInt64.max
             let numbers = MCOIndexSet(range: MCORangeMake(firstId, lastId))
-            let fetchOperation = self.session.fetchMessagesOperationWithFolder(self.folder, requestKind: .Headers, uids: numbers)
+            let requestKind: MCOIMAPMessagesRequestKind = [.Uid, .Flags, .Headers, .Structure, .Size]
+            let fetchOperation = self.session.fetchMessagesOperationWithFolder(self.folder, requestKind: requestKind, uids: numbers)
     
             fetchOperation.start(completionHandler)
         }
