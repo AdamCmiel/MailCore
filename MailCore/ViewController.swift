@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if self.loginRetries < 3 {
                 self.loginRetries += 1
                 self.logout(self)
-                self.loadEmail(creds: creds)
+                self.loginAndFetchEmail()
             } else {
                 fatalError()
             }

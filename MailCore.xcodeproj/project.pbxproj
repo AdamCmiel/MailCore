@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3D6276646D3067382FE05B2B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FE1581441C7842605F5ED64 /* Pods.framework */; };
+		772A51C01CB438A40055CEDE /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A51BF1CB438A40055CEDE /* Alert.swift */; };
+		772A51C11CB438A40055CEDE /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A51BF1CB438A40055CEDE /* Alert.swift */; };
+		772A51C21CB438A40055CEDE /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A51BF1CB438A40055CEDE /* Alert.swift */; };
 		772D3BAF1CAA5F07003C2DDB /* libMailCore-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 772D3BAE1CAA5F07003C2DDB /* libMailCore-ios.a */; };
 		7747E0541C422B6A0044E6EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E0531C422B6A0044E6EA /* AppDelegate.swift */; };
 		7747E0561C422B6A0044E6EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E0551C422B6A0044E6EA /* ViewController.swift */; };
@@ -58,6 +61,7 @@
 /* Begin PBXFileReference section */
 		4953FBC2EC2434C6BDE031E1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6FE1581441C7842605F5ED64 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		772A51BF1CB438A40055CEDE /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		772D3BAE1CAA5F07003C2DDB /* libMailCore-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMailCore-ios.a"; path = "Pods/mailcore2-ios/lib/libMailCore-ios.a"; sourceTree = "<group>"; };
 		772D3BB01CAA6784003C2DDB /* GTMOAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMOAuth2.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MailCore-gkbbvadityppdscpxcrgaqzlqaym/Build/Products/Debug-iphonesimulator/GTMOAuth2.framework"; sourceTree = "<group>"; };
 		772D3BB11CAA6784003C2DDB /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MailCore-gkbbvadityppdscpxcrgaqzlqaym/Build/Products/Debug-iphonesimulator/GTMSessionFetcher.framework"; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 		7747E0521C422B6A0044E6EA /* MailCore */ = {
 			isa = PBXGroup;
 			children = (
+				772A51BF1CB438A40055CEDE /* Alert.swift */,
 				77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */,
 				77A44BCC1C4EB71F00F731A7 /* Mail.swift */,
 				7747E0841C422C130044E6EA /* Bridging-Header.h */,
@@ -389,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				772A51C01CB438A40055CEDE /* Alert.swift in Sources */,
 				77A44BCD1C4EB71F00F731A7 /* Mail.swift in Sources */,
 				77A44BC91C4EB14300F731A7 /* WebViewViewController.swift in Sources */,
 				7747E0561C422B6A0044E6EA /* ViewController.swift in Sources */,
@@ -404,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				772A51C11CB438A40055CEDE /* Alert.swift in Sources */,
 				77A44BCE1C4EB71F00F731A7 /* Mail.swift in Sources */,
 				77A44BCA1C4EB14300F731A7 /* WebViewViewController.swift in Sources */,
 				77A44BDA1C4EFA8100F731A7 /* Email.swift in Sources */,
@@ -416,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				772A51C21CB438A40055CEDE /* Alert.swift in Sources */,
 				77A44BCF1C4EB71F00F731A7 /* Mail.swift in Sources */,
 				77A44BCB1C4EB14300F731A7 /* WebViewViewController.swift in Sources */,
 				77A44BDB1C4EFA8100F731A7 /* Email.swift in Sources */,
