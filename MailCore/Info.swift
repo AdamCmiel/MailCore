@@ -55,6 +55,14 @@ struct AppDefaults {
             NSUserDefaults.standardUserDefaults().setObject(value, forKey: key)
         }
     }
+    
+    func integerForKey(key: String) -> Int {
+            return NSUserDefaults.standardUserDefaults().integerForKey(key)
+    }
+    
+    func setInteger(i: Int, forKey key: String) {
+            return NSUserDefaults.standardUserDefaults().setInteger(i, forKey: key)
+    }
 }
 
 struct GmailCreds {

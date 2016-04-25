@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func refresh(sender: AnyObject) {
-        Mail.sharedMail.getEmailHeaders(20, completionHandler: { headers in
+        Mail.sharedMail.getEmailHeaders({ headers in
             self.messagesDidFetchWithHeaders(headers)
         }, errorHandler: { error in
             if self.loginRetries < 3 {
@@ -49,6 +49,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.addSubview(refresher)
         
         loginAndFetchEmail()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        reload()
     }
     
     func loginAndFetchEmail() {
@@ -78,25 +83,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let email = emails[indexPath.row]
         cell.textLabel!.text = email.subject
-        
-        if !email.read!.boolValue {
-            cell.textLabel?.textColor = UIColor.blueColor().colorWithAlphaComponent(0.4);
-        }
-        
+        cell.textLabel?.textColor = email.read ? UIColor.blackColor() :UIColor.blueColor().colorWithAlphaComponent(0.4)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let email = emails[indexPath.row]
+        cell.textLabel?.textColor = email.read ? UIColor.blackColor() :UIColor.blueColor().colorWithAlphaComponent(0.4)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let email = emails[indexPath.row]
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.setSelected(false, animated: true)
+        email.setValue(true, forKey: "read")
+        
+        AppDelegate.thatDelegate.saveContext()
+        
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            self.tableView(tableView, willDisplayCell: cell, forRowAtIndexPath: indexPath)
+            cell.setSelected(false, animated: true)
+        }
+        
         performSegueWithIdentifier("showWebViewController", sender: email)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController is WebViewViewController {
             let webViewController = segue.destinationViewController as! WebViewViewController
-            let email = sender as! MCOIMAPMessage
+            let email = sender as! Email
             
             webViewController.email = email
         }
@@ -136,7 +149,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func auth(auth: GTMOAuth2Authentication, finishedRefreshWithFetcher fetcher: GTMSessionFetcher, error: NSError?) {
         
         guard error == nil else {
-            fatalError("there was an error refreshing the session")
+            poorNetworkAlert("There was an error refreshing the session", sender: self, completionHandler: nil)
+            
+            return
         }
         
         windowController(nil, finishedWithAuth: auth, error: error)
@@ -145,7 +160,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func windowController(windowController: GTMOAuth2ViewControllerTouch?, finishedWithAuth auth: GTMOAuth2Authentication, error: NSError?) {
         
         guard error == nil else {
-            fatalError("there was an error finishing the authentication")
+            if let windowController = windowController {
+                windowController.dismissViewControllerAnimated(true) {
+                    print("window controller dismissed")
+                }
+            }
+            poorNetworkAlert("There was an error finishing the authentication", sender: self, completionHandler: nil)
+            return
         }
         
         if let windowController = windowController {

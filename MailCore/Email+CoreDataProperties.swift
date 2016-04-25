@@ -15,7 +15,7 @@ import CoreData
 extension Email {
 
     @NSManaged var subject: String?
-    @NSManaged var uid: NSNumber?
-    @NSManaged var read: NSNumber?
+    @NSManaged var uid: UInt32
+    @NSManaged var read: Bool
 
 }

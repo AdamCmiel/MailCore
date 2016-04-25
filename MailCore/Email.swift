@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Email: NSManagedObject {
+class Email: NSManagedObject, UniqueUid {
 
     static let NAME = "Email"
     
@@ -28,32 +28,46 @@ class Email: NSManagedObject {
         return (context, request)
     }
     
-    class func all() -> [Email] {
+    class func all(predicateBlock: ((NSManagedObjectContext, NSFetchRequest) -> NSFetchRequest)?) -> [Email] {
+        
         let (context, request) = _emailFetchRequest()
         
+        var requestToExecute: NSFetchRequest
+        if let block = predicateBlock {
+            requestToExecute = block(context, request)
+        } else {
+            requestToExecute = request
+        }
+        
         do {
-            return try context.executeFetchRequest(request) as! [Email]
+            return try context.executeFetchRequest(requestToExecute) as! [Email]
         } catch let error {
             print(error)
             return []
         }
     }
     
-    class func all(sinceUID minUID: Int) -> [Email] {
-        let (context, request) = _emailFetchRequest()
-        let predicate = NSPredicate(format: "uid >= \(minUID)")
-        request.predicate = predicate
-        
-        do {
-            return try context.executeFetchRequest(request) as! [Email]
-        } catch let error {
-            print(error)
-            return []
+    class func all() -> [Email] {
+        return all(nil)
+    }
+    
+    class func all(fromUid minUID: Int, toUid maxUID: Int) -> [Email] {
+        return all { _, request in
+            let predicate = NSPredicate(format: "uid >= \(minUID) AND uid <= \(maxUID)")
+            request.predicate = predicate
+            return request
+        }
+    }
+    
+    class func all(limit returnLimit: Int) -> [Email] {
+        return all { _, request in
+            request.fetchLimit = returnLimit
+            return request
         }
     }
     
     func filePath() -> String {
-        return "e\(self.uid!.integerValue).email.html"
+        return "e\(self.uid).email.html"
     }
     
 }
@@ -66,8 +80,8 @@ extension Array where Element:MCOIMAPMessage {
     func mapToEmails() -> [Email] {
         let emails = self.map { (headers: MCOIMAPMessage) -> Email in
             let email = Email.create()
-            email.uid = NSNumber(int: Int32(headers.uid))
-            email.read = NSNumber(bool: headers.flags.contains(.Seen))
+            email.uid = headers.uid
+            email.read = headers.flags.contains(.Seen)
             email.subject = headers.header.subject
             return email
         }
@@ -75,4 +89,34 @@ extension Array where Element:MCOIMAPMessage {
         AppDelegate.thatDelegate.saveContext()
         return emails
     }
+    
+    func filterUidsAlreadyHave() -> [Element] {
+        if let lowerLimit = leastUid() {
+            if let upperLimit = greatestUid() {
+                let iLowerLimit = Int(lowerLimit)
+                let iUpperLimit = Int(upperLimit)
+                
+                let emailUidsToFilter = Email.all(fromUid: iLowerLimit, toUid: iUpperLimit).map({ $0.uid })
+                return filter { !emailUidsToFilter.contains($0.uid) }
+            }
+        }
+        
+        return []
+    }
+}
+
+extension Array where Element:UniqueUid {
+    func greatestUid() -> UInt32? {
+        return map({ $0.uid }).maxElement()
+    }
+    
+    func leastUid() -> UInt32? {
+        return map({ $0.uid }).minElement()
+    }
+}
+
+extension MCOIMAPMessage: UniqueUid {}
+
+protocol UniqueUid {
+    var uid: UInt32 { get }
 }

@@ -3,7 +3,7 @@
     <entity name="Email" representedClassName=".Email" syncable="YES">
         <attribute name="read" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
         <element name="Email" positionX="-63" positionY="-18" width="128" height="90"/>
