@@ -11,7 +11,7 @@ import WebKit
 
 class WebViewViewController: UIViewController, WKNavigationDelegate {
     var uid: UInt64?
-    var email: MCOIMAPMessage?
+    var email: Email?
     
     var indicator: UIActivityIndicatorView?
     
@@ -24,7 +24,7 @@ class WebViewViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem?.title = "Inbox"
-        navigationItem.title = email?.header.subject
+        navigationItem.title = email!.subject
         
         self.view.addSubview(webView)
         

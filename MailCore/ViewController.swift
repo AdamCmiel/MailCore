@@ -11,7 +11,7 @@ import GTMOAuth2
 import GTMSessionFetcher
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var emails: [MCOIMAPMessage] = []
+    var emails: [Email] = []
     var refresher = UIRefreshControl()
     var loginRetries = 0
     
@@ -60,8 +60,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func messagesDidFetchWithHeaders(emailHeaders: [MCOIMAPMessage]) {
-        self.emails = emailHeaders
+    func messagesDidFetchWithHeaders(emails: [Email]) {
+        self.emails = emails
         self.reload()
         self.refresher.endRefreshing()
     }
@@ -77,9 +77,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let email = emails[indexPath.row]
-        cell.textLabel!.text = email.header.subject
+        cell.textLabel!.text = email.subject
         
-        if !email.flags.contains(.Seen) {
+        if !email.read!.boolValue {
             cell.textLabel?.textColor = UIColor.blueColor().colorWithAlphaComponent(0.4);
         }
         
@@ -110,18 +110,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Mail.sharedMail.session.OAuth2Token = creds.accessToken
         
         refresher.beginRefreshing()
-        
-        Mail.sharedMail.getEmailHeaders(20, completionHandler: { headers in
-            self.messagesDidFetchWithHeaders(headers)
-        }, errorHandler: { error in
-            if self.loginRetries < 3 {
-                self.loginRetries += 1
-                self.logout(self)
-                self.loginAndFetchEmail()
-            } else {
-                fatalError()
-            }
-        })
+        refresh(self)
     }
     
     func signIn() {

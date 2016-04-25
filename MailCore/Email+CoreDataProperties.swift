@@ -17,7 +17,5 @@ extension Email {
     @NSManaged var subject: String?
     @NSManaged var uid: NSNumber?
     @NSManaged var read: NSNumber?
-    @NSManaged var encrypted: NSNumber?
-    @NSManaged var encryptionKey: String?
 
 }

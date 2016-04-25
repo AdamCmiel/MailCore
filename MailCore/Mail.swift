@@ -12,11 +12,11 @@ struct Mail {
     
     static var sharedMail = Mail()
     
-    static let kGmailIMAPHostnameKey = "GmailIMAPHostname"
-    static let kGmailIMAPFolderKey = "GmailIMAPFolder"
-    static let kGmailIMAPPortKey = "GmailIMAPPort"
+    private static let kGmailIMAPHostnameKey = "GmailIMAPHostname"
+    private static let kGmailIMAPFolderKey = "GmailIMAPFolder"
+    private static let kGmailIMAPPortKey = "GmailIMAPPort"
     
-    var folder: String {
+    private var folder: String {
         return Info[Mail.kGmailIMAPFolderKey] as! String
     }
     
@@ -29,11 +29,11 @@ struct Mail {
         return s
     }()
     
-    func fetchFolderInfo(completionHandler: (NSError?, MCOIMAPFolderInfo?) -> Void) {
+    private func fetchFolderInfo(completionHandler: (NSError?, MCOIMAPFolderInfo?) -> Void) {
         session.folderInfoOperation(folder).start(completionHandler)
     }
     
-    func fetchMessageHeaders(count: Int, completionHandler: (NSError?, [AnyObject]?, MCOIndexSet?) -> Void, errorHandler: ErrorType -> Void) {
+    private func fetchMessageHeaders(count: Int, completionHandler: (NSError?, [AnyObject]?, MCOIndexSet?) -> Void, errorHandler: ErrorType -> Void) {
         
         fetchFolderInfo { (error, info) -> Void in
             
@@ -59,7 +59,7 @@ struct Mail {
      - Parameter completionHandler: callback with email
      
      */
-    func getEmailHeaders(completionHandler: [MCOIMAPMessage]! -> Void, errorHandler: ErrorType -> Void) {
+    func getEmailHeaders(completionHandler: [Email] -> Void, errorHandler: ErrorType -> Void) {
         getEmailHeaders(50, completionHandler: completionHandler, errorHandler: errorHandler)
     }
     
@@ -72,7 +72,7 @@ struct Mail {
      - Parameter completionHandler: callback with email
      
     */
-    func getEmailHeaders(count: Int, completionHandler: [MCOIMAPMessage]! -> Void, errorHandler: ErrorType -> Void) {
+    func getEmailHeaders(count: Int, completionHandler: [Email] -> Void, errorHandler: ErrorType -> Void) {
         
         fetchMessageHeaders(count, completionHandler: { error, messages, vanishedMessages in
             print("operation callback")
@@ -83,34 +83,53 @@ struct Mail {
                 fatalError()
             }
             
-            print("the post man delivereth")
-            print(messages)
-            
             let imapMessages = messages as! [MCOIMAPMessage]
-            completionHandler(imapMessages.reverse())
+            print("fetched \(imapMessages.count) messages")
+            completionHandler(imapMessages.mapToEmails())
         }, errorHandler: errorHandler)
     }
     
-    func getEmailData(message: MCOIMAPMessage, completionHandler: NSData -> Void) {
+    private func getEmailData(email: Email, completionHandler: NSData -> Void) {
         let f = folder
-        let messageDownloadOperation = session.fetchMessageOperationWithFolder(f, uid: message.uid)
+        let emailUID = UInt32(email.uid!.intValue)
+        let messageDownloadOperation = session.fetchMessageOperationWithFolder(f, uid: emailUID)
         
         messageDownloadOperation.start { (error, messageData) -> Void in
             
             guard error == nil else {
                 print("error downloading email body")
                 print(error)
-                fatalError()
+                return
             }
             
             completionHandler(messageData!)
         }
     }
     
-    func emailHTML(message: MCOIMAPMessage, completionHandler: String -> Void) {
-        getEmailData(message) { data in
+    /**
+ 
+    Renders the IMAP email into HTML to be viewed in a WebView
+ 
+    - Parameter message: the message record to look up
+ 
+    - Parameter completionHandler: have email, will call back
+ 
+    */
+    func emailHTML(email: Email, completionHandler: String -> Void) {
+        
+        let emailFilePath = email.filePath()
+        if let file = Files.get(emailFilePath) {
+            return completionHandler(file)
+        }
+        
+        getEmailData(email) { data in
             let messageParser = MCOMessageParser(data: data)
-            completionHandler(messageParser.htmlRenderingWithDelegate(nil))
+            let htmlString = messageParser.htmlRenderingWithDelegate(nil)
+            let didSave = Files.store(htmlString, withIdentifier: emailFilePath)
+            if !didSave {
+                print("error saving file \(emailFilePath)")
+            }
+            completionHandler(htmlString)
         }
     }
 }

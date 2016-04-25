@@ -21,6 +21,7 @@
 		7747E06C1C422B6B0044E6EA /* MailCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E06B1C422B6B0044E6EA /* MailCoreTests.swift */; };
 		7747E0771C422B6B0044E6EA /* MailCoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7747E0761C422B6B0044E6EA /* MailCoreUITests.swift */; };
 		775B385E1CAA7113001F5967 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775B385D1CAA7113001F5967 /* GTMOAuth2ViewTouch.xib */; };
+		779439581CC87476005B3599 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779439571CC87476005B3599 /* Files.swift */; };
 		77A44BC11C4EAABB00F731A7 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC01C4EAABB00F731A7 /* Info.swift */; };
 		77A44BC91C4EB14300F731A7 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */; };
 		77A44BCA1C4EB14300F731A7 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */; };
@@ -82,6 +83,7 @@
 		7747E0781C422B6B0044E6EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7747E0841C422C130044E6EA /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		775B385D1CAA7113001F5967 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
+		779439571CC87476005B3599 /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 		77A44BC01C4EAABB00F731A7 /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		77A44BCC1C4EB71F00F731A7 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		7747E0521C422B6A0044E6EA /* MailCore */ = {
 			isa = PBXGroup;
 			children = (
+				779439571CC87476005B3599 /* Files.swift */,
 				772A51BF1CB438A40055CEDE /* Alert.swift */,
 				77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */,
 				77A44BCC1C4EB71F00F731A7 /* Mail.swift */,
@@ -401,6 +404,7 @@
 				77A44BD61C4EFA8100F731A7 /* Email+CoreDataProperties.swift in Sources */,
 				77A44BD91C4EFA8100F731A7 /* Email.swift in Sources */,
 				77A44BC11C4EAABB00F731A7 /* Info.swift in Sources */,
+				779439581CC87476005B3599 /* Files.swift in Sources */,
 				7747E05C1C422B6B0044E6EA /* MailCore.xcdatamodeld in Sources */,
 				7747E0541C422B6A0044E6EA /* AppDelegate.swift in Sources */,
 			);
