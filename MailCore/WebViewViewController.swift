@@ -21,6 +21,12 @@ class WebViewViewController: UIViewController, WKNavigationDelegate {
         return wv
     }()
     
+    func dismiss() {
+        poorNetworkAlert(self) {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem?.title = "Inbox"
@@ -38,9 +44,12 @@ class WebViewViewController: UIViewController, WKNavigationDelegate {
             indicator.center = self.view.center
         }
         
-        Mail.sharedMail.emailHTML(email!) { html in
+        Mail.sharedMail.emailHTML(email!, completionHandler: { html in
             self.webView.loadHTMLString(html, baseURL: nil)
-        }
+        }, errorHandler: { error in
+            print(error)
+            self.dismiss()
+        })
     }
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
@@ -74,9 +83,7 @@ class WebViewViewController: UIViewController, WKNavigationDelegate {
     }
     
     func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
-        poorNetworkAlert(self) {
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
+        dismiss()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
     }
 }

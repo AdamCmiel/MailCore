@@ -92,6 +92,7 @@
 		77A44C331C4EFED000F731A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		77A44C371C4F001B00F731A7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		77A44C391C4F002800F731A7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		77CAB7971CCE82710096D041 /* MailCore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MailCore.entitlements; sourceTree = "<group>"; };
 		7E4BAEDDA38162998009A666 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +159,7 @@
 		7747E0521C422B6A0044E6EA /* MailCore */ = {
 			isa = PBXGroup;
 			children = (
+				77CAB7971CCE82710096D041 /* MailCore.entitlements */,
 				779439571CC87476005B3599 /* Files.swift */,
 				772A51BF1CB438A40055CEDE /* Alert.swift */,
 				77A44BC81C4EB14300F731A7 /* WebViewViewController.swift */,
@@ -282,6 +284,15 @@
 				TargetAttributes = {
 					7747E04F1C422B6A0044E6EA = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 45JU49X5G4;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					7747E0661C422B6B0044E6EA = {
 						CreatedOnToolsVersion = 7.2;
@@ -561,6 +572,7 @@
 			baseConfigurationReference = 7E4BAEDDA38162998009A666 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MailCore/MailCore.entitlements;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Private/GTMOAuth2\"";
 				INFOPLIST_FILE = MailCore/Info.plist;
@@ -580,6 +592,7 @@
 			baseConfigurationReference = 4953FBC2EC2434C6BDE031E1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MailCore/MailCore.entitlements;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Private/GTMOAuth2\"";
 				INFOPLIST_FILE = MailCore/Info.plist;

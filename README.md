@@ -25,7 +25,7 @@ will be presented, and will load the email html in a UIWebView, for the user to 
 Fetching email is a relatively small, but non-trivial data fetching operation, so the app seeks to minimize the download
 requirements by caching the data as such:
 
-- Emails will be stored in CoreData with their `uid`, `subject`, and a pointer to a location on disk where to store the html
+- Emails will be stored in CoreData with their `uid`, `subject`, and if they've been `read`
 - Email html content will be saved to a file in the app's Documents directory.  Email can be fetched on cold app start by reading from the disk store
 
 

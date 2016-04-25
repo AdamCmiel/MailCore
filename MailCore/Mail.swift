@@ -94,7 +94,11 @@ struct Mail {
             guard error == nil else {
                 print("error downloading message headers")
                 print(error)
-                fatalError()
+                
+                // Return last 100 emails from CoreData
+                let emailsFromCD = Email.all(limit: 100)
+                completionHandler(emailsFromCD)
+                return
             }
             
             let imapMessages = messages as! [MCOIMAPMessage]
@@ -114,7 +118,7 @@ struct Mail {
         }, errorHandler: errorHandler)
     }
     
-    private func getEmailData(email: Email, completionHandler: NSData -> Void) {
+    private func getEmailData(email: Email, completionHandler: NSData -> Void, errorHandler: ErrorType -> Void) {
         let f = folder
         let emailUID = UInt32(email.uid)
         let messageDownloadOperation = session.fetchMessageOperationWithFolder(f, uid: emailUID)
@@ -123,13 +127,13 @@ struct Mail {
         messageDownloadOperation.start { (error, messageData) -> Void in
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
             
-            guard error == nil else {
+            if let error = error {
                 print("error downloading email body")
                 print(error)
-                return
+                errorHandler(error)
+            } else {
+                completionHandler(messageData!)
             }
-            
-            completionHandler(messageData!)
         }
     }
     
@@ -142,14 +146,14 @@ struct Mail {
     - Parameter completionHandler: have email, will call back
  
     */
-    func emailHTML(email: Email, completionHandler: String -> Void) {
+    func emailHTML(email: Email, completionHandler: String -> Void, errorHandler: ErrorType -> Void) {
         
         let emailFilePath = email.filePath()
         if let file = Files.get(emailFilePath) {
             return completionHandler(file)
         }
         
-        getEmailData(email) { data in
+        getEmailData(email, completionHandler: { data in
             let messageParser = MCOMessageParser(data: data)
             let htmlString = messageParser.htmlRenderingWithDelegate(nil)
             let didSave = Files.store(htmlString, withIdentifier: emailFilePath)
@@ -157,6 +161,6 @@ struct Mail {
                 print("error saving file \(emailFilePath)")
             }
             completionHandler(htmlString)
-        }
+        }, errorHandler: errorHandler)
     }
 }

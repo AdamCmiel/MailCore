@@ -30,12 +30,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         Mail.sharedMail.getEmailHeaders({ headers in
             self.messagesDidFetchWithHeaders(headers)
         }, errorHandler: { error in
-            if self.loginRetries < 3 {
-                self.loginRetries += 1
-                self.logout(self)
-                self.loginAndFetchEmail()
-            } else {
-                fatalError()
+            print(error)
+            
+            do {
+                let creds = try GmailSession.sharedSession.creds()
+                self.messagesDidFetchWithHeaders(Email.all(limit: 100))
+            } catch {
+                if self.loginRetries < 3 {
+                    self.loginRetries += 1
+                    self.logout(self)
+                    self.loginAndFetchEmail()
+                } else {
+                    fatalError()
+                }
             }
         })
     }

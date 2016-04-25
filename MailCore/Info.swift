@@ -18,7 +18,12 @@ struct AppInfo {
 
 struct AppSecrets {
     static let sharedSecrets = AppSecrets()
-    let keychain = KeychainSwift()
+    
+    let keychain: KeychainSwift = {
+        let keychain = KeychainSwift()
+        keychain.accessGroup = "com.adamcmiel.app.MailCore"
+        return keychain
+    }()
 
     subscript(key: String) -> String? {
         get {
@@ -77,11 +82,20 @@ struct GmailCreds {
     let email: String
     
     static func readFromStorage() -> GmailCreds? {
+        /*
         guard let _userId = Secrets[kUserIdKey] else {
             return nil
         }
         
         guard let _token = Secrets[kTokenKey] else {
+            return nil
+        }
+        */
+        guard let _userId = Defaults[kUserIdKey] as? String else {
+            return nil
+        }
+        
+        guard let _token = Defaults[kTokenKey] as? String else {
             return nil
         }
         
@@ -99,8 +113,13 @@ struct GmailCreds {
     func saveToStorage() {
         Defaults[GmailCreds.kNameKey] = name
         Defaults[GmailCreds.kEmailKey] = email
+        
+        /* iOS 9 broke keychain-swift?
         Secrets[GmailCreds.kUserIdKey] = userId
         Secrets[GmailCreds.kTokenKey] = accessToken
+        */
+        Defaults[GmailCreds.kUserIdKey] = userId
+        Defaults[GmailCreds.kTokenKey] = accessToken
     }
     
     static func clearStorage() {
@@ -108,6 +127,10 @@ struct GmailCreds {
         Defaults[GmailCreds.kEmailKey] = nil
         Secrets[GmailCreds.kUserIdKey] = nil
         Secrets[GmailCreds.kTokenKey] = nil
+        
+        /* ioS 9 broke keychain-swift? */
+        Defaults[GmailCreds.kUserIdKey] = nil
+        Defaults[GmailCreds.kTokenKey] = nil
         GmailSession.sharedSession.inMemoryCreds = nil
     }
 }
