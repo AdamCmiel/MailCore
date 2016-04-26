@@ -12,10 +12,15 @@ private typealias CB = (Void -> Void)?
 
 func poorNetworkAlert(sender: UIViewController, completionHandler: (Void->Void)?) {
     let defaultMessage = "Poor network connection"
-    poorNetworkAlert(defaultMessage, sender: sender, completionHandler: completionHandler)
+    recoverableErrorAlert(defaultMessage, sender: sender, completionHandler: completionHandler)
 }
 
-func poorNetworkAlert(message: String, sender: UIViewController, completionHandler: (Void -> Void)?) {
+func recoverableErrorAlert(message: String, sender: UIViewController, completionHandler: (Void -> Void)?) {
+    let alertController = recoverableErrorAlert(message, completionHandler: completionHandler)
+    sender.presentViewController(alertController, animated: true, completion: nil)
+}
+
+func recoverableErrorAlert(message: String, completionHandler: (Void -> Void)?) -> UIAlertController {
     let alertTitle = "Error"
     
     let alertController = UIAlertController(title: alertTitle, message: message, preferredStyle: .Alert)
@@ -25,5 +30,5 @@ func poorNetworkAlert(message: String, sender: UIViewController, completionHandl
     }
     
     alertController.addAction(OKAction)
-    sender.presentViewController(alertController, animated: true, completion: nil)
+    return alertController
 }

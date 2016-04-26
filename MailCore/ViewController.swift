@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func logout(sender: AnyObject) {
         GmailCreds.clearStorage()
         Mail.sharedMail = Mail()
-    GTMOAuth2ViewControllerTouch.removeAuthFromKeychainForName("googleKeychain")
+        GTMOAuth2ViewControllerTouch.removeAuthFromKeychainForName("googleKeychain")
         emails = []
         reload()
         loginAndFetchEmail()
@@ -31,9 +31,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.messagesDidFetchWithHeaders(headers)
         }, errorHandler: { error in
             print(error)
+            poorNetworkAlert(self, completionHandler: nil)
             
             do {
-                let creds = try GmailSession.sharedSession.creds()
+                _ = try GmailSession.sharedSession.creds()
                 self.messagesDidFetchWithHeaders(Email.all(limit: 100))
             } catch {
                 if self.loginRetries < 3 {
@@ -41,7 +42,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.logout(self)
                     self.loginAndFetchEmail()
                 } else {
-                    fatalError()
+                    recoverableErrorAlert("Could not fetch email or login", sender: self, completionHandler: nil)
                 }
             }
         })
@@ -114,14 +115,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.destinationViewController is WebViewViewController {
-            let webViewController = segue.destinationViewController as! WebViewViewController
+        if let webViewController = segue.destinationViewController as? WebViewViewController {
             let email = sender as! Email
-            
             webViewController.email = email
-        }
-        else {
-            fatalError()
         }
     }
     
@@ -156,7 +152,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func auth(auth: GTMOAuth2Authentication, finishedRefreshWithFetcher fetcher: GTMSessionFetcher, error: NSError?) {
         
         guard error == nil else {
-            poorNetworkAlert("There was an error refreshing the session", sender: self, completionHandler: nil)
+            recoverableErrorAlert("There was an error refreshing the session", sender: self, completionHandler: nil)
             
             return
         }
@@ -172,7 +168,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("window controller dismissed")
                 }
             }
-            poorNetworkAlert("There was an error finishing the authentication", sender: self, completionHandler: nil)
+            recoverableErrorAlert("There was an error finishing the authentication", sender: self, completionHandler: nil)
             return
         }
         
